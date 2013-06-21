@@ -1,27 +1,57 @@
 require 'minitest/spec'
 require 'minitest/autorun'
 
-require_relative '../lib/ruby-poker/poker_hand.rb'
+require_relative '../lib/ruby-poker.rb'
 
 describe PokerHand, 'Manages entire hand' do
   describe 'Exercise tests' do
 
     before :each do
-      @string_hand = PokerHand.new("2D 9C AS AH AC")
-      @array_hand = PokerHand.new(%w(8H 9D 3C 9H KS 2H))
-    end
-
-    it 'should have method allow_duplicates' do
-      @string_hand.must_respond_to(allow_duplicates)
+      @string_hand = PokerHand.new('2D 9C AS KH AC')
+      @array_hand = PokerHand.new(%w(2D 9C AS KH AC))
     end
 
     it 'should create hand from string' do
-      @string_hand
+      @string_hand.must_be_instance_of(PokerHand)
 
     end
 
     it 'should create hand from array'
 
+    it 'should create the same hand from both string and array' do
+      @string_hand.must_equal @array_hand
+    end
+
     it 'should sort by suit'
+
+    it 'should not create hand with invalid cards' do
+    # err.message.must_match /Foo/
+     error = ->{ PokerHand.new('2B 7H TS KC 3H')}.must_raise ArgumentError
+
+      # invalid_hand.wont_be_instance_of(PokerHand)
+    end
+
+    it 'should have array of verbose hand ratings' do
+      PokerHand::OPS.size.must_equal 10
+    end
+
+    it 'should return string of entire hand' do
+      @array_hand.to_s.must_equal "2d 9c As Kh Ac (Pair)"
+    end
   end
+
+  describe 'Check to see if specific hands are recognized' do
+    before :each do
+      @flush = PokerHand.new('3H QH 9H JH 2H')
+      @straight = PokerHand.new('6C 7D 8H 9H TC')
+      @two_pair = PokerHand.new('7C 7H AS TD ')
+    end
+
+    it 'should recognize a flush' do
+      @flush.flush?.must_equal [[6, 11, 10, 8, 2, 1], "Qh Jh 9h 3h 2h"]
+      @straight.flush?.must_equal false
+    end
+  end
+
+
 end
