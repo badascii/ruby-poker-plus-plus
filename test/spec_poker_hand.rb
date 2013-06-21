@@ -41,7 +41,7 @@ describe PokerHand, 'Manages entire hand' do
     before :each do
       @flush = PokerHand.new('3H QH 9H JH 2H')
       @straight = PokerHand.new('6C 7D 8H 9H TC')
-      @two_pair = PokerHand.new('7C 7H AS TD ')
+      @two_pair = PokerHand.new('7C 7H AS TD AC')
       @just_missed = PokerHand.new('AD KD QD JD 9D')
     end
 

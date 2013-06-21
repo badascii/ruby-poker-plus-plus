@@ -77,7 +77,7 @@ class PokerHand
   def royal_flush?
     if (md = (by_suit =~ /A(.) K\1 Q\1 J\1 T\1/))
       [[10], arrange_hand(md)]
-    elsif self.just_missed_royal_flush? == true
+    elsif just_missed_royal_flush?
       puts "Wow, sucks to be you!"
       return false
     else
