@@ -25,10 +25,7 @@ describe PokerHand, 'Manages entire hand' do
     it 'should sort by suit'
 
     it 'should not create hand with invalid cards' do
-    # err.message.must_match /Foo/
-     error = ->{ PokerHand.new('2B 7H TS KC 3H')}.must_raise ArgumentError
-
-      # invalid_hand.wont_be_instance_of(PokerHand)
+      proc { PokerHand.new('2B 7H TS KC 3H') }.must_raise ArgumentError
     end
 
     it 'should have array of verbose hand ratings' do
@@ -45,13 +42,16 @@ describe PokerHand, 'Manages entire hand' do
       @flush = PokerHand.new('3H QH 9H JH 2H')
       @straight = PokerHand.new('6C 7D 8H 9H TC')
       @two_pair = PokerHand.new('7C 7H AS TD ')
+      @just_missed = PokerHand.new('AD KD QD JD 9D')
     end
 
     it 'should recognize a flush' do
       @flush.flush?.must_equal [[6, 11, 10, 8, 2, 1], "Qh Jh 9h 3h 2h"]
       @straight.flush?.must_equal false
     end
+
+    it 'should mock user when royal flush is barely missed' do
+      @just_missed.just_missed_royal_flush?.must_equal true
+    end
   end
-
-
 end

@@ -77,9 +77,24 @@ class PokerHand
   def royal_flush?
     if (md = (by_suit =~ /A(.) K\1 Q\1 J\1 T\1/))
       [[10], arrange_hand(md)]
+    elsif self.just_missed_royal_flush? == true
+      puts "Wow, sucks to be you!"
+      return false
     else
-      false
+      return false
     end
+  end
+
+  # This method is super mean to the user when they barely miss a royal flush
+  def just_missed_royal_flush?
+    if self =~ (miss1 = /A(.) K\1 Q\1 J\1/) ||
+               (miss2 = /A(.) K\1 Q\1 T\1/) ||
+               (miss3 = /A(.) K\1 J\1 T\1/) ||
+               (miss4 = /A(.) Q\1 J\1 T\1/) ||
+               (miss5 = /K(.) Q\1 J\1 T\1/)
+      return true
+    end
+    return false
   end
 
   def straight_flush?
@@ -335,9 +350,9 @@ class PokerHand
   def allow_duplicates
     @@allow_duplicates
   end
-  
+
   # Checks whether the hand matches usual expressions like AA, AK, AJ+, 66+, AQs, AQo...
-  # 
+  #
   # Valid expressions:
   # * "AJ": Matches exact faces (in this case an Ace and a Jack), suited or not
   # * "AJs": Same but suited only
@@ -364,11 +379,11 @@ class PokerHand
   #
   def match? expression
     raise "Hands with #{@hand.size} cards is not supported" unless @hand.size == 2
-    
+
     if expression.is_a? Array
       return expression.any? { |e| match?(e) }
     end
-    
+
     faces = @hand.map { |card| card.face }.sort.reverse
     suited = @hand.map { |card| card.suit }.uniq.size == 1
     if expression =~ /^(.)(.)(s|o|)(\+|)$/
@@ -377,7 +392,7 @@ class PokerHand
       raise ArgumentError, "Invalid expression: #{expression.inspect}" unless face1 and face2
       suit_match = $3
       plus = ($4 != "")
-      
+
       if plus
         if face1 == face2
           face_match = (faces.first == faces.last and faces.first >= face1)
@@ -402,7 +417,7 @@ class PokerHand
       raise ArgumentError, "Invalid expression: #{expression.inspect}"
     end
   end
-  
+
   def +(other)
     cards = @hand.map { |card| Card.new(card) }
     case other
