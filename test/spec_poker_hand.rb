@@ -39,7 +39,7 @@ describe PokerHand, 'Manages entire hand' do
 
   end
 
-  describe 'Check for hand contents' do
+  describe 'Check hand contents' do
     before :each do
       @two_pair = PokerHand.new('7C 7H AS TD AC')
       @straight = PokerHand.new('6C 7D 8H 9H TC')

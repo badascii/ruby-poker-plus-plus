@@ -1,4 +1,4 @@
-= Extension of Rob Olson's ruby-poker gem for Portland Code School
+= Extension of Rob Olson's ruby-poker gem
 
   - Added spec files for both poker_hand.rb and card.rb
   - Added RakeTask which runs spec files using 'rake test'
@@ -6,6 +6,7 @@
     royal flush by 1 card
   - Added tests that check validity of new method
 
+Portland Code School exam
 
 = Poker library in Ruby
 

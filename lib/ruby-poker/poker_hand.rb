@@ -87,9 +87,9 @@ class PokerHand
   # This method is super mean to the user when they barely miss a royal flush
   def just_missed_royal_flush?
     if self =~ ((/A(.) K\1 Q\1 J\1/) ||
-               (/A(.) K\1 Q\1 T\1/) ||
-               (/A(.) K\1 J\1 T\1/) ||
-               (/A(.) Q\1 J\1 T\1/) ||
+               (/A(.) K\1 Q\1 T\1/)  ||
+               (/A(.) K\1 J\1 T\1/)  ||
+               (/A(.) Q\1 J\1 T\1/)  ||
                (/K(.) Q\1 J\1 T\1/))
       return true
     end
