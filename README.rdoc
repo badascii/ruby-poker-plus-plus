@@ -1,21 +1,29 @@
+= Extension of Rob Olson's ruby-poker gem for Portland Code School
+
+  - Added spec files for both poker_hand.rb and card.rb
+  - Added RakeTask which runs spec files using 'rake test'
+  - Extended original gem with a new method that mocks the user if they miss a
+    royal flush by 1 card
+  - Added tests that check validity of new method
+
+
 = Poker library in Ruby
-===
 
 Author:: {Rob Olson}[http://thinkingdigitally.com]
 Email:: [first name] [at] thinkingdigitally.com
 GitHub:: http://github.com/robolson/ruby-poker
 
-== Description
+= Description
 
 Ruby-Poker handles the logic for getting the rank of a poker hand. It can also be used to compare two or more hands to determine which hand has the highest poker value.
 
 Card representations can be passed to the PokerHand constructor as a string or an array. Face cards (cards ten, jack, queen, king, and ace) are created using their letter representation (T, J, Q, K, A).
 
-== Install
+= Install
 
     gem install ruby-poker
 
-== Example
+= Example
 
     require 'rubygems'
     require 'ruby-poker'
@@ -29,7 +37,7 @@ Card representations can be passed to the PokerHand constructor as a string or a
     puts hand2.rank           => Three of a kind
     puts hand1 > hand2        => true
 
-== Duplicates
+= Duplicates
 
 By default ruby-poker will not raise an exception if you add the same card to a hand twice. You can tell ruby-poker to not allow duplicates by doing the following
 
@@ -37,14 +45,14 @@ By default ruby-poker will not raise an exception if you add the same card to a 
 
 Place that line near the beginning of your program. The change is program wide so once allow_duplicates is set to false, _all_ poker hands will raise an exception if a duplicate card is added to the hand.
 
-== Compatibility
+= Compatibility
 
 Ruby-Poker is compatible with Ruby 1.8 and Ruby 1.9
 
-== History
+= History
 
 In the 0.2.0 release Patrick Hurley's Texas Holdem code from http://www.rubyquiz.com/quiz24.html was merged into ruby-poker.
 
-== License
+= License
 
 This is free software; you can redistribute it and/or modify it under the terms of the BSD license. See LICENSE for more details.

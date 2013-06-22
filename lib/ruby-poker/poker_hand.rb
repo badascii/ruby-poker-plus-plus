@@ -79,7 +79,6 @@ class PokerHand
       [[10], arrange_hand(md)]
     elsif just_missed_royal_flush?
       puts "Wow, sucks to be you!"
-      return false
     else
       return false
     end
@@ -87,11 +86,11 @@ class PokerHand
 
   # This method is super mean to the user when they barely miss a royal flush
   def just_missed_royal_flush?
-    if self =~ (miss1 = /A(.) K\1 Q\1 J\1/) ||
-               (miss2 = /A(.) K\1 Q\1 T\1/) ||
-               (miss3 = /A(.) K\1 J\1 T\1/) ||
-               (miss4 = /A(.) Q\1 J\1 T\1/) ||
-               (miss5 = /K(.) Q\1 J\1 T\1/)
+    if self =~ ((/A(.) K\1 Q\1 J\1/) ||
+               (/A(.) K\1 Q\1 T\1/) ||
+               (/A(.) K\1 J\1 T\1/) ||
+               (/A(.) Q\1 J\1 T\1/) ||
+               (/K(.) Q\1 J\1 T\1/))
       return true
     end
     return false
