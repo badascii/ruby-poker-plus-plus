@@ -24,13 +24,19 @@ class Card
     'A' => 14
   }
 
-  def Card.face_value(face)
+  def self.face_value(face)
     face.upcase!
     if face == 'L' || !FACE_VALUES.has_key?(face)
       nil
     else
       FACE_VALUES[face] - 1
     end
+  end
+
+  def self.random_card
+    rand_suit = rand(3)
+    rand_face = rand(13) + 1
+    Card.new(rand_suit, rand_face)
   end
 
   private

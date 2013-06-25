@@ -1,4 +1,5 @@
 require 'minitest/autorun'
+require 'ostruct' # Enables use of easy-to-read structs
 
 require_relative '../lib/ruby-poker.rb'
 
@@ -35,5 +36,9 @@ describe Card, 'Manages single cards' do
       @card2.must_respond_to :natural_value
       @card3.must_respond_to :natural_value
       @card4.must_respond_to :natural_value
+    end
+
+    it 'should create a valid random card' do
+      Card.new(Card.random_card).must_be_instance_of Card
     end
 end

@@ -1,19 +1,22 @@
 class PlayPoker
 
+  def initialize
+
+  end
+
   def self.start
+    puts "Betting is closed!"
+    puts "Dealing hands..."
   end
 
-  def self.random_hand
+  def random_hand
     rand_hand = []
+    rand_hand << rand(13) + 1
     rand_hand << (PlayPoker.random_card)
     rand_hand << (PlayPoker.random_card)
     rand_hand << (PlayPoker.random_card)
     rand_hand << (PlayPoker.random_card)
-    rand_hand << (PlayPoker.random_card)
-  end
-
-  def self.random_card
-    rand(13) + 1
+    PokerHand.new(rand_hand)
   end
 end
 

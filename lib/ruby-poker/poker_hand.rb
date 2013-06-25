@@ -31,6 +31,17 @@ class PokerHand
     check_for_duplicates unless allow_duplicates
   end
 
+  def self.random_hand
+    rand_array = []
+    rand_array << Card.random_card
+    rand_array << Card.random_card
+    rand_array << Card.random_card
+    rand_array << Card.random_card
+    rand_array << Card.random_card
+
+    PokerHand.new(rand_array)
+  end
+
   # Returns a new PokerHand object with the cards sorted by suit
   # The suit order is spades, hearts, diamonds, clubs
   #

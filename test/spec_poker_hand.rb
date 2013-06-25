@@ -1,5 +1,5 @@
-require 'minitest/spec'
 require 'minitest/autorun'
+require 'ostruct' # Enables use of easy-to-read structs
 
 require_relative '../lib/ruby-poker.rb'
 
@@ -42,6 +42,15 @@ describe PokerHand, 'Manages entire hand' do
       @verbose_array.must_be_instance_of Array
       @verbose_array.size.must_equal 10
     end
+
+    it 'should create a random hand' do
+      PokerHand.random_hand.must_respond_to :to_s
+    end
+    #   random_cards = OpenStruct.new(:hand => '2D 9C AS KH AC')
+    #   rand_hand = PokerHand.new(random_cards)
+
+    #   rand_hand.hand.must_match /2d 9c As Kh Ac/
+    # end
   end
 
   describe 'Check hand contents' do
