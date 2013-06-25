@@ -75,10 +75,16 @@ class PokerHand
   end
 
   def royal_flush?
+    snarky_responses = ["Wow, sucks to be you!",
+                        "Hahahaha",
+                        "Tough luck, chump",
+                        "Just go home",
+                        "...lol"]
+
     if (md = (by_suit =~ /A(.) K\1 Q\1 J\1 T\1/))
       [[10], arrange_hand(md)]
     elsif just_missed_royal_flush?
-      puts "Wow, sucks to be you!"
+      puts snarky_responses[rand(4)]
     else
       return false
     end

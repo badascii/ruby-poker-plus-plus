@@ -5,13 +5,19 @@ require_relative '../lib/ruby-poker.rb'
 
 describe PokerHand, 'Manages entire hand' do
   describe 'Exercise tests' do
-
     before :each do
       @string_hand = PokerHand.new('2D 9C AS KH AC')
       @squished_string_hand = PokerHand.new('2D9CASKHAC')
       @array_hand = PokerHand.new(%w(2D 9C AS KH AC))
       @verbose_array = PokerHand::OPS
     end
+
+    # it 'should mock me relentlessly' do
+    #   cards = MiniTest::Mock.new
+    #   cards.expect(:initialize, ['2d', '9c', 'As', 'Kh', 'Ac'])
+    #   poker_hand = PokerHand.new(@string_hand)
+    #   cards.verify
+    # end
 
     it 'should create hand from string' do
       @string_hand.must_be_instance_of PokerHand
@@ -36,7 +42,6 @@ describe PokerHand, 'Manages entire hand' do
       @verbose_array.must_be_instance_of Array
       @verbose_array.size.must_equal 10
     end
-
   end
 
   describe 'Check hand contents' do

@@ -1,4 +1,3 @@
-require 'minitest/spec'
 require 'minitest/autorun'
 
 require_relative '../lib/ruby-poker.rb'
@@ -29,7 +28,6 @@ describe Card, 'Manages single cards' do
       @face_value_hash.has_key?('5').must_equal true
       @face_value_hash.has_value?(11).must_equal true
       @face_value_hash.has_value?(3).must_equal true
-
     end
 
     it 'should know its position in the deck' do
