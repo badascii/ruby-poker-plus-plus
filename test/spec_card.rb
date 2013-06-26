@@ -1,9 +1,9 @@
 require 'minitest/autorun'
-require 'ostruct' # Enables use of easy-to-read structs
+require 'ostruct' # Enables use of easy-to-read structs for testing
 
 require_relative '../lib/ruby-poker.rb'
 
-describe Card, 'Manages single cards' do
+describe Card, 'A single poker card' do
     # Sets up test with a variety of different new card inputs
     before :each do
       @card1 = Card.new('9H')

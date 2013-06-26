@@ -43,9 +43,7 @@ describe PokerHand, 'Manages entire hand' do
       @verbose_array.size.must_equal 10
     end
 
-    it 'should create a random hand' do
-      PokerHand.random_hand.must_respond_to :to_s
-    end
+    # it 'should create a random hand' do
     #   random_cards = OpenStruct.new(:hand => '2D 9C AS KH AC')
     #   rand_hand = PokerHand.new(random_cards)
 

@@ -1,5 +1,7 @@
 # This is a sample Deck implementation.
 class Deck
+  attr_accessor :cards
+
   def initialize
     @cards = []
     Card::SUITS.each_byte do |suit|

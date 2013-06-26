@@ -1,59 +1,21 @@
-= Extension of Rob Olson's ruby-poker gem
+== Extension of Rob Olson's ruby-poker gem (Portland Code School exam)
 
-  - Added spec files for both poker_hand.rb and card.rb
-  - Added RakeTask which runs spec files using 'rake test'
-  - Extended original gem with a new method that mocks the user if they miss a
-    royal flush by 1 card
-  - Added tests that check validity of new method
+    Additions:
 
-Portland Code School exam
+    - command-line interface
 
-= Poker library in Ruby
+    - spec-style tests w/ updated Rake task
 
-Author:: {Rob Olson}[http://thinkingdigitally.com]
-Email:: [first name] [at] thinkingdigitally.com
-GitHub:: http://github.com/robolson/ruby-poker
+    - test-driven development of extensions
 
-= Description
+    - card.rb
+        1) new class method that generates a random card
 
-Ruby-Poker handles the logic for getting the rank of a poker hand. It can also be used to compare two or more hands to determine which hand has the highest poker value.
+    - poker_hand.rb
+        1) new class method that generates a hand of random cards
+        2) new instance method that mocks the user if they miss a royal
+           flush by 1 card
 
-Card representations can be passed to the PokerHand constructor as a string or an array. Face cards (cards ten, jack, queen, king, and ace) are created using their letter representation (T, J, Q, K, A).
-
-= Install
-
-    gem install ruby-poker
-
-= Example
-
-    require 'rubygems'
-    require 'ruby-poker'
-
-    hand1 = PokerHand.new("8H 9C TC JD QH")
-    hand2 = PokerHand.new(["3D", "3C", "3S", "KD", "AH"])
-    puts hand1                => 8h 9c Tc Jd Qh (Straight)
-    puts hand1.just_cards     => 8h 9c Tc Jd Qh
-    puts hand1.rank           => Straight
-    puts hand2                => 3d 3c 3s Kd Ah (Three of a kind)
-    puts hand2.rank           => Three of a kind
-    puts hand1 > hand2        => true
-
-= Duplicates
-
-By default ruby-poker will not raise an exception if you add the same card to a hand twice. You can tell ruby-poker to not allow duplicates by doing the following
-
-    PokerHand.allow_duplicates = false
-
-Place that line near the beginning of your program. The change is program wide so once allow_duplicates is set to false, _all_ poker hands will raise an exception if a duplicate card is added to the hand.
-
-= Compatibility
-
-Ruby-Poker is compatible with Ruby 1.8 and Ruby 1.9
-
-= History
-
-In the 0.2.0 release Patrick Hurley's Texas Holdem code from http://www.rubyquiz.com/quiz24.html was merged into ruby-poker.
-
-= License
-
-This is free software; you can redistribute it and/or modify it under the terms of the BSD license. See LICENSE for more details.
+    - poker_game.rb
+        1) new class that handles individual poker games
+        2) will track username and bet amounts (NYI)
