@@ -1,4 +1,4 @@
-== Extension of Rob Olson's ruby-poker gem (Portland Code School exam)
+== Extension of Rob Olson's ruby-poker gem
 
     Additions:
 
